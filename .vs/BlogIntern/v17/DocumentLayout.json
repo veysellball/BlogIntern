@@ -1,0 +1,168 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\dtos\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\dtos\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\migrations\\20251023100135_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\migrations\\20251023100135_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|c:\\users\\veysel\\source\\repos\\blogintern\\blogintern\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7F4AA1CA-A9DD-4DCF-84C5-1555160A513B}|BlogIntern\\BlogIntern.csproj|solutionrelative:blogintern\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Controllers\\UserController.cs",
+              "RelativeToolTip": "BlogIntern\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T12:52:40.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Dtos\\UserCreateDto.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Dtos\\UserCreateDto.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Dtos\\UserCreateDto.cs",
+              "RelativeToolTip": "BlogIntern\\Dtos\\UserCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T12:48:40.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "BlogIntern\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T08:59:17.732Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TestController.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Controllers\\TestController.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Controllers\\TestController.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Controllers\\TestController.cs",
+              "RelativeToolTip": "BlogIntern\\Controllers\\TestController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T10:13:59.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20251023100135_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Migrations\\20251023100135_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Migrations\\20251023100135_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Migrations\\20251023100135_InitialCreate.cs",
+              "RelativeToolTip": "BlogIntern\\Migrations\\20251023100135_InitialCreate.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T10:01:35.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Program.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Program.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Program.cs",
+              "RelativeToolTip": "BlogIntern\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T09:45:09.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\appsettings.json",
+              "RelativeDocumentMoniker": "BlogIntern\\appsettings.json",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\appsettings.json",
+              "RelativeToolTip": "BlogIntern\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-23T09:35:51.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "BlogIntern\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T09:30:54.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BlogIntern\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\Models\\User.cs",
+              "RelativeToolTip": "BlogIntern\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T09:19:38.82Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
