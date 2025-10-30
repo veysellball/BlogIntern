@@ -1,0 +1,26 @@
+# Visual Studio temporary files
+.vs/
+*.db
+*.db-shm
+*.db-wal
+*.suo
+*.user
+*.cache
+*.pdb
+*.obj
+*.dll
+*.exe
+*.log
+
+# Build folders
+bin/
+obj/
+
+# EF Core migration cache
+Migrations/
+
+# Other temporary files
+*.tmp
+*.bak
+*.old
+*.vsidx

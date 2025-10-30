@@ -5165,11 +5165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\BlogIntern.csproj",
+      "projectUniqueName": "C:\\Users\\veysel\\Documents\\GitHub\\BlogIntern\\BlogIntern\\BlogIntern.csproj",
       "projectName": "BlogIntern",
-      "projectPath": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\BlogIntern.csproj",
+      "projectPath": "C:\\Users\\veysel\\Documents\\GitHub\\BlogIntern\\BlogIntern\\BlogIntern.csproj",
       "packagesPath": "C:\\Users\\veysel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\veysel\\source\\repos\\BlogIntern\\BlogIntern\\obj\\",
+      "outputPath": "C:\\Users\\veysel\\Documents\\GitHub\\BlogIntern\\BlogIntern\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

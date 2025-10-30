@@ -2,6 +2,7 @@
 
 namespace BlogIntern.Models
 {
+
     public class User
     {
         [Key] // Primary key
@@ -18,5 +19,8 @@ namespace BlogIntern.Models
         [Required]
         [MinLength(6)]
         public string Password { get; set; }
+
+        public bool IsActive { get; set; } = true;
+
     }
 }

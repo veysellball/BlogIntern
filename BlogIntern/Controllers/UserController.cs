@@ -1,6 +1,7 @@
 ﻿using BlogIntern.Data;
 using BlogIntern.Dtos;
 using BlogIntern.Models;
+using BlogIntern.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,34 +11,79 @@ namespace BlogIntern.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IUserService _userService;
 
-        public UserController(AppDbContext context)
+        public UserController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] UserCreateDto dto)
+        public async Task<IActionResult> AddNewUser([FromBody] User user)
         {
-            // Email var mı kontrolü
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
-            if (existingUser != null)
+            if (!ModelState.IsValid)
             {
-                return Conflict(new { message = "A user with this email already exists." });
+                return BadRequest(ModelState);
             }
 
-            var user = new User
+            try
             {
-                Name = dto.Name,
-                Email = dto.Email,
-                Password = dto.Password
-            };
-
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(CreateUser), new { id = user.Id }, user);
+                var createdUser = await _userService.AddNewUser(user);
+                return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsers();
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            try
+            {
+                var user = await _userService.GetUserById(id);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUserById(int id)
+        {
+            var deleted = await _userService.DeleteUserById(id);
+            if (!deleted) return NotFound();
+            return NoContent();
+        }
+
+        [HttpPatch("soft-delete/{id}")]
+        public async Task<IActionResult> SoftDeleteUserById(int id)
+        {
+            var updated = await _userService.SoftDeleteUserById(id);
+            if (!updated) return NotFound();
+            return Ok(new { message = "User deactivated successfully" });
+        }
+
+        [HttpPatch("reactivate/{id}")]
+        public async Task<IActionResult> ReActivateUserById(int id)
+        {
+            var reactivated = await _userService.ReActivateUserById(id);
+            if (!reactivated)
+                return NotFound(new { message = $"User with id {id} not found." });
+
+            return Ok(new { message = "User reactivated successfully" });
+        }
+
     }
 }
