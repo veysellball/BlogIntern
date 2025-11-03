@@ -2,7 +2,10 @@
 using BlogIntern.Models;
 using BlogIntern.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlogIntern.Services.Implements
 {
@@ -33,10 +36,30 @@ namespace BlogIntern.Services.Implements
 
         public async Task<User> AddNewUser(User user)
         {
+            var existing = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            if (existing != null)
+                throw new Exception("Bu email zaten kayıtlı.");
+
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.InsertDate = DateTime.Now;
             user.IsActive = true;
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
             return user;
+        }
+
+        // ✅ Yeni eklenen method
+        // Kullanıcıları tarih bazında (InsertDate) sıralı getirir, en güncel en başta
+        public async Task<List<User>> GetAllUsersOrderByDate()
+        {
+            return await _context.Users
+                .Where(u => u.IsActive)
+                .OrderByDescending(u => u.InsertDate)
+                .ToListAsync();
         }
 
         public async Task<bool> DeleteUserById(int id)
@@ -73,6 +96,5 @@ namespace BlogIntern.Services.Implements
             await _context.SaveChangesAsync();
             return true;
         }
-
     }
 }

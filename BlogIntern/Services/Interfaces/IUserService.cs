@@ -13,6 +13,7 @@ namespace BlogIntern.Services.Interfaces
         Task<bool> DeleteUserById(int id);
         Task<bool> SoftDeleteUserById(int id);
         Task<bool> ReActivateUserById(int id);
+        Task<List<User>> GetAllUsersOrderByDate();
 
     }
 }

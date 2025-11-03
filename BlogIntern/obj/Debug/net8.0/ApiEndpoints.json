@@ -69,6 +69,32 @@
   },
   {
     "ContainingType": "BlogIntern.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BlogIntern.Dtos.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.UserController",
+    "Method": "GetAllUsersOrderByDate",
+    "RelativePath": "api/User/order-by-date",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.UserController",
     "Method": "ReActivateUserById",
     "RelativePath": "api/User/reactivate/{id}",
     "HttpMethod": "PATCH",

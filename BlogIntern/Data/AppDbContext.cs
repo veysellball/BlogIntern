@@ -1,6 +1,7 @@
 ﻿
 using BlogIntern.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlogIntern.Data
 {
@@ -10,5 +11,9 @@ namespace BlogIntern.Data
             : base(options) { }
 
         public DbSet<User> Users { get; set; }
+
+        [Required]
+        public DateTime InsertDate { get; set; } = DateTime.Now;
+
     }
 }

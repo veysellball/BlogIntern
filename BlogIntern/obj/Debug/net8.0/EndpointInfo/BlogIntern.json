@@ -58,6 +58,37 @@
         }
       }
     },
+    "/api/User/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User/{id}": {
       "get": {
         "tags": [
@@ -94,6 +125,18 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/order-by-date": {
+      "get": {
+        "tags": [
+          "User"
         ],
         "responses": {
           "200": {
@@ -190,6 +233,25 @@
   },
   "components": {
     "schemas": {
+      "LoginRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "User": {
         "required": [
           "email",
@@ -218,6 +280,10 @@
           },
           "isActive": {
             "type": "boolean"
+          },
+          "insertDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

@@ -1,6 +1,7 @@
 ﻿using BlogIntern.Data;
 using BlogIntern.Dtos;
 using BlogIntern.Models;
+using BlogIntern.Services.Implements;
 using BlogIntern.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace BlogIntern.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILoginService _loginService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, ILoginService loginService)
         {
             _userService = userService;
+            _loginService = loginService;
         }
 
         [HttpPost]
@@ -35,6 +38,17 @@ namespace BlogIntern.Controllers
             {
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            bool success = await _loginService.LoginAsync(request.Email, request.Password);
+
+            if (!success)
+                return Unauthorized(new { success = false, message = "Email veya şifre hatalı" });
+
+            return Ok(new { success = true, message = "Giriş başarılı" });
         }
 
 
@@ -58,6 +72,14 @@ namespace BlogIntern.Controllers
                 return NotFound(new { message = ex.Message });
             }
         }
+
+        [HttpGet("order-by-date")]
+        public async Task<IActionResult> GetAllUsersOrderByDate()
+        {
+            var users = await _userService.GetAllUsersOrderByDate();
+            return Ok(users);
+        }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserById(int id)
