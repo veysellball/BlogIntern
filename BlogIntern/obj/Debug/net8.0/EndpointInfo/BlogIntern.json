@@ -26,17 +26,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateDto"
               }
             }
           }
@@ -252,7 +252,7 @@
         },
         "additionalProperties": false
       },
-      "User": {
+      "UserCreateDto": {
         "required": [
           "email",
           "name",
@@ -260,12 +260,7 @@
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
-            "maxLength": 100,
             "minLength": 1,
             "type": "string"
           },
@@ -275,15 +270,8 @@
             "format": "email"
           },
           "password": {
-            "minLength": 6,
+            "minLength": 1,
             "type": "string"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "insertDate": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

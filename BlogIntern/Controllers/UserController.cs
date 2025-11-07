@@ -21,17 +21,26 @@ namespace BlogIntern.Controllers
             _loginService = loginService;
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> AddNewUser([FromBody] User user)
+        public async Task<IActionResult> AddNewUser([FromBody] UserCreateDto dto)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             try
             {
+                // DTO'dan entity'ye mapleme
+                var user = new User
+                {
+                    Name = dto.Name,
+                    Email = dto.Email,
+                    Password = dto.Password,
+                    
+                };
+
                 var createdUser = await _userService.AddNewUser(user);
+
                 return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
             }
             catch (Exception ex)

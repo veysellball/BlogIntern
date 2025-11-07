@@ -23,7 +23,6 @@ namespace BlogIntern.Models
         public bool IsActive { get; set; } = true;
 
         public DateTime InsertDate { get; set; } = DateTime.Now;
-
-
+       
     }
 }

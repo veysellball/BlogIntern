@@ -18,8 +18,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "BlogIntern.Models.User",
+        "Name": "dto",
+        "Type": "BlogIntern.Dtos.UserCreateDto",
         "IsRequired": true
       }
     ],
