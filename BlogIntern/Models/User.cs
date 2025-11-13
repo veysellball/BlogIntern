@@ -23,6 +23,9 @@ namespace BlogIntern.Models
         public bool IsActive { get; set; } = true;
 
         public DateTime InsertDate { get; set; } = DateTime.Now;
-       
+
+        // 🔹 User <-> UserRole bağlantısı (Many-to-Many)
+        public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+
     }
 }

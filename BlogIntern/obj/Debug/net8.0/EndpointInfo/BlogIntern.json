@@ -1,11 +1,43 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "BlogIntern",
-    "version": "1.0"
+    "title": "BlogIntern API",
+    "description": "JWT destekli Blog API",
+    "version": "v1"
   },
   "paths": {
-    "/api/Test": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Test/public": {
       "get": {
         "tags": [
           "Test"
@@ -17,7 +49,31 @@
         }
       }
     },
-    "/api/User": {
+    "/api/Test/secure": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Test/db-check": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/user": {
       "post": {
         "tags": [
           "User"
@@ -46,7 +102,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/user/profile": {
       "get": {
         "tags": [
           "User"
@@ -58,30 +116,11 @@
         }
       }
     },
-    "/api/User/login": {
-      "post": {
+    "/api/user/all": {
+      "get": {
         "tags": [
           "User"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -89,7 +128,7 @@
         }
       }
     },
-    "/api/User/{id}": {
+    "/api/user/by-id/{id}": {
       "get": {
         "tags": [
           "User"
@@ -110,7 +149,21 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/user/order-by-date": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
       "delete": {
         "tags": [
           "User"
@@ -133,19 +186,7 @@
         }
       }
     },
-    "/api/User/order-by-date": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/User/soft-delete/{id}": {
+    "/api/user/soft-delete/{id}": {
       "patch": {
         "tags": [
           "User"
@@ -168,7 +209,7 @@
         }
       }
     },
-    "/api/User/reactivate/{id}": {
+    "/api/user/reactivate/{id}": {
       "patch": {
         "tags": [
           "User"
@@ -233,21 +274,16 @@
   },
   "components": {
     "schemas": {
-      "LoginRequest": {
-        "required": [
-          "email",
-          "password"
-        ],
+      "LoginRequestDto": {
         "type": "object",
         "properties": {
           "email": {
-            "minLength": 1,
             "type": "string",
-            "format": "email"
+            "nullable": true
           },
           "password": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -299,6 +335,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Lütfen 'Bearer <token>' formatında JWT token giriniz.",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

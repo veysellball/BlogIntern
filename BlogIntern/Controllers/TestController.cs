@@ -1,5 +1,5 @@
-﻿
-using BlogIntern.Data;
+﻿using BlogIntern.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogIntern.Controllers
@@ -15,12 +15,29 @@ namespace BlogIntern.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        
+        [AllowAnonymous]
+        [HttpGet("public")]
+        public IActionResult PublicTest()
+        {
+            return Ok("🌍 Public endpoint: Bu endpoint'e herkes erişebilir.");
+        }
+
+        
+        [Authorize]
+        [HttpGet("secure")]
+        public IActionResult SecureTest()
+        {
+            return Ok("🔐 Secure endpoint: JWT token ile giriş yapılmış!");
+        }
+
+      
+        [AllowAnonymous]
+        [HttpGet("db-check")]
+        public IActionResult CheckDatabase()
         {
             try
             {
-                // Basit bir veritabanı bağlantı testi
                 var canConnect = _context.Database.CanConnect();
                 if (canConnect)
                     return Ok("✅ Veritabanı bağlantısı başarılı!");

@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using BlogIntern.Dtos;
+using System.Threading.Tasks;
 
 namespace BlogIntern.Services.Interfaces
 {
     public interface ILoginService
     {
-        Task<bool> LoginAsync(string email, string password);
+        Task<TokenResponseDto?> LoginAsync(LoginRequestDto dto);
     }
 }

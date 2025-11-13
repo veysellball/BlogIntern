@@ -1,27 +1,30 @@
 ﻿using BlogIntern.Data;
 using BlogIntern.Dtos;
 using BlogIntern.Models;
-using BlogIntern.Services.Implements;
 using BlogIntern.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogIntern.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/user")] 
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
         private readonly ILoginService _loginService;
+        private readonly AppDbContext _context;
 
-        public UserController(IUserService userService, ILoginService loginService)
+        public UserController(IUserService userService, ILoginService loginService, AppDbContext context)
         {
             _userService = userService;
             _loginService = loginService;
+            _context = context;
         }
 
-
+        
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddNewUser([FromBody] UserCreateDto dto)
         {
@@ -30,17 +33,14 @@ namespace BlogIntern.Controllers
 
             try
             {
-                // DTO'dan entity'ye mapleme
                 var user = new User
                 {
                     Name = dto.Name,
                     Email = dto.Email,
-                    Password = dto.Password,
-                    
+                    Password = dto.Password
                 };
 
                 var createdUser = await _userService.AddNewUser(user);
-
                 return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
             }
             catch (Exception ex)
@@ -49,26 +49,45 @@ namespace BlogIntern.Controllers
             }
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+       
+        [Authorize]
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetProfile()
         {
-            bool success = await _loginService.LoginAsync(request.Email, request.Password);
+            var email = User.Identity?.Name;
 
-            if (!success)
-                return Unauthorized(new { success = false, message = "Email veya şifre hatalı" });
+            if (string.IsNullOrEmpty(email))
+                return Unauthorized("Token geçersiz.");
 
-            return Ok(new { success = true, message = "Giriş başarılı" });
+            var user = await _context.Users
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+                return NotFound("Kullanıcı bulunamadı.");
+
+            return Ok(new
+            {
+                user.Id,
+                user.Name,
+                user.Email,
+                Roles = user.UserRoles.Select(r => r.Role.Name)
+            });
         }
 
-
-        [HttpGet]
+        
+        [Authorize(Roles = "Admin")]
+        [HttpGet("all")]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userService.GetAllUsers();
             return Ok(users);
         }
 
-        [HttpGet("{id}")]
+        
+        [Authorize(Roles = "Admin")]
+        [HttpGet("by-id/{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
             try
@@ -82,6 +101,8 @@ namespace BlogIntern.Controllers
             }
         }
 
+      
+        [Authorize(Roles = "Admin")]
         [HttpGet("order-by-date")]
         public async Task<IActionResult> GetAllUsersOrderByDate()
         {
@@ -89,8 +110,9 @@ namespace BlogIntern.Controllers
             return Ok(users);
         }
 
-
-        [HttpDelete("{id}")]
+     
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteUserById(int id)
         {
             var deleted = await _userService.DeleteUserById(id);
@@ -98,7 +120,9 @@ namespace BlogIntern.Controllers
             return NoContent();
         }
 
-        [HttpPatch("soft-delete/{id}")]
+       
+        [Authorize(Roles = "Admin")]
+        [HttpPatch("soft-delete/{id:int}")]
         public async Task<IActionResult> SoftDeleteUserById(int id)
         {
             var updated = await _userService.SoftDeleteUserById(id);
@@ -106,7 +130,9 @@ namespace BlogIntern.Controllers
             return Ok(new { message = "User deactivated successfully" });
         }
 
-        [HttpPatch("reactivate/{id}")]
+       
+        [Authorize(Roles = "Admin")]
+        [HttpPatch("reactivate/{id:int}")]
         public async Task<IActionResult> ReActivateUserById(int id)
         {
             var reactivated = await _userService.ReActivateUserById(id);
@@ -115,6 +141,5 @@ namespace BlogIntern.Controllers
 
             return Ok(new { message = "User reactivated successfully" });
         }
-
     }
 }
