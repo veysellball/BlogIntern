@@ -8,7 +8,7 @@ namespace BlogIntern.Dtos
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
 
-        [JsonIgnore]  // Swagger ve dış JSON isteğinde görünmez
+        [JsonIgnore]  //invisible to client
         public string LoginType { get; set; } = "email";
     }
 }

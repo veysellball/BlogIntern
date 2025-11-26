@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BlogIntern.Controllers
 {
     [ApiController]
-    [Route("api/user")] 
+    [Route("api/user")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -23,7 +23,7 @@ namespace BlogIntern.Controllers
             _context = context;
         }
 
-        
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddNewUser([FromBody] UserCreateDto dto)
@@ -33,14 +33,8 @@ namespace BlogIntern.Controllers
 
             try
             {
-                var user = new User
-                {
-                    Name = dto.Name,
-                    Email = dto.Email,
-                    Password = dto.Password
-                };
+                var createdUser = await _userService.AddNewUser(dto);
 
-                var createdUser = await _userService.AddNewUser(user);
                 return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
             }
             catch (Exception ex)
@@ -49,7 +43,7 @@ namespace BlogIntern.Controllers
             }
         }
 
-       
+
         [Authorize]
         [HttpGet("profile")]
         public async Task<IActionResult> GetProfile()
@@ -76,7 +70,7 @@ namespace BlogIntern.Controllers
             });
         }
 
-        
+
         [Authorize(Roles = "Admin")]
         [HttpGet("all")]
         public async Task<IActionResult> GetAllUsers()
@@ -85,7 +79,7 @@ namespace BlogIntern.Controllers
             return Ok(users);
         }
 
-        
+
         [Authorize(Roles = "Admin")]
         [HttpGet("by-id/{id}")]
         public async Task<IActionResult> GetUserById(int id)
@@ -101,7 +95,7 @@ namespace BlogIntern.Controllers
             }
         }
 
-      
+
         [Authorize(Roles = "Admin")]
         [HttpGet("order-by-date")]
         public async Task<IActionResult> GetAllUsersOrderByDate()
@@ -110,7 +104,7 @@ namespace BlogIntern.Controllers
             return Ok(users);
         }
 
-     
+
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteUserById(int id)
@@ -120,7 +114,7 @@ namespace BlogIntern.Controllers
             return NoContent();
         }
 
-       
+
         [Authorize(Roles = "Admin")]
         [HttpPatch("soft-delete/{id:int}")]
         public async Task<IActionResult> SoftDeleteUserById(int id)
@@ -130,7 +124,7 @@ namespace BlogIntern.Controllers
             return Ok(new { message = "User deactivated successfully" });
         }
 
-       
+
         [Authorize(Roles = "Admin")]
         [HttpPatch("reactivate/{id:int}")]
         public async Task<IActionResult> ReActivateUserById(int id)
@@ -141,5 +135,22 @@ namespace BlogIntern.Controllers
 
             return Ok(new { message = "User reactivated successfully" });
         }
+
+        [HttpGet("with-roles")]
+        public async Task<IActionResult> GetUsersWithRoles()
+        {
+            var result = await _userService.GetUsersWithRoles_SP();
+            return Ok(result);
+        }
+
+
+        [HttpGet("users-by-role/{roleName}")]
+        public async Task<IActionResult> GetUsersByRole(string roleName)
+        {
+            var result = await _userService.GetUsersByRole_SP(roleName);
+            return Ok(result);
+        }
+
+
     }
 }

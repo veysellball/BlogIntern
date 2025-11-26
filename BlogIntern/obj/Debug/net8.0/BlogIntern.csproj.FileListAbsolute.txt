@@ -343,3 +343,9 @@ C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\obj\Debug\net8.0\refint\B
 C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\obj\Debug\net8.0\BlogIntern.pdb
 C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\obj\Debug\net8.0\BlogIntern.genruntimeconfig.cache
 C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\obj\Debug\net8.0\ref\BlogIntern.dll
+C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\bin\Debug\net8.0\StackExchange.Redis.dll

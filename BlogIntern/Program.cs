@@ -13,10 +13,28 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddDbContext<AdventureContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AdventureWorks")));
 
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = "localhost:6379";
+    options.InstanceName = "BlogIntern_";
+});
+
+
+
+
+builder.Services.AddScoped<RedisTestService>();
+
+
+builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
-builder.Services.AddSingleton<JwtTokenService>(); // Token üretici singleton
+builder.Services.AddSingleton<JwtTokenService>(); 
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");

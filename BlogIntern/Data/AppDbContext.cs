@@ -1,6 +1,7 @@
 ﻿using BlogIntern.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using BlogIntern.Dtos;
 
 namespace BlogIntern.Data
 {
@@ -9,19 +10,27 @@ namespace BlogIntern.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
 
+        public DbSet<UserWithRoleDto> UserWithRoleDtos => Set<UserWithRoleDto>();
+        public DbSet<UserWithRoleSpDto> UserWithRoleSp => Set<UserWithRoleSpDto>();
+
+
+
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }          // Yeni
-        public DbSet<UserRole> UserRoles { get; set; }  // Yeni
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         [Required]
         public DateTime InsertDate { get; set; } = DateTime.Now;
 
-        // 🔹 İLİŞKİ TANIMLARI BURAYA (constructor'un dışına, class'ın içine)
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // UserRole - Many-to-Many ilişki tanımı
+            modelBuilder.Entity<UserWithRoleDto>().HasNoKey();
+
+            modelBuilder.Entity<UserWithRoleSpDto>().HasNoKey();
+
             modelBuilder.Entity<UserRole>()
                 .HasKey(ur => new { ur.UserId, ur.RoleId });
 

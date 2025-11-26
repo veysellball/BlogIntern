@@ -1,5 +1,35 @@
 [
   {
+    "ContainingType": "AsyncDemoController",
+    "Method": "Async",
+    "RelativePath": "api/AsyncDemo/async",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AsyncDemoController",
+    "Method": "Sync",
+    "RelativePath": "api/AsyncDemo/sync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.AuthController",
+    "Method": "Decode",
+    "RelativePath": "api/Auth/decode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlogIntern.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -13,6 +43,36 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.RedisController",
+    "Method": "Clear",
+    "RelativePath": "api/Redis/clear",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.RedisController",
+    "Method": "FromDb",
+    "RelativePath": "api/Redis/db",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.RedisController",
+    "Method": "FromRedis",
+    "RelativePath": "api/Redis/redis",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -156,24 +216,29 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlogIntern.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "ContainingType": "BlogIntern.Controllers.UserController",
+    "Method": "GetUsersByRole",
+    "RelativePath": "api/user/users-by-role/{roleName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.UserController",
+    "Method": "GetUsersWithRoles",
+    "RelativePath": "api/user/with-roles",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[BlogIntern.WeatherForecast, BlogIntern, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
   }
 ]

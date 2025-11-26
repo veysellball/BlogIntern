@@ -1,7 +1,9 @@
 ﻿using BlogIntern.Dtos;
+using BlogIntern.Services.Implements;
 using BlogIntern.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace BlogIntern.Controllers
 {
@@ -9,19 +11,22 @@ namespace BlogIntern.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly ILoginService _loginService;
+        private readonly LoginService _loginService;
+        private readonly JwtTokenService _jwtTokenService;
 
-        public AuthController(ILoginService loginService)
+        public AuthController(LoginService loginService, JwtTokenService jwtTokenService)
         {
             _loginService = loginService;
+            _jwtTokenService = jwtTokenService;
         }
+
 
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
 
-           
+
 
             var result = await _loginService.LoginAsync(request);
 
@@ -36,5 +41,22 @@ namespace BlogIntern.Controllers
                 expiration = result.Expiration
             });
         }
+
+        [HttpPost("decode")]
+        public IActionResult Decode()
+        {
+            var token = HttpContext.Request.Headers["Authorization"].ToString();
+
+            if (string.IsNullOrEmpty(token))
+                return BadRequest("Token header içinde gönderilmedi.");
+
+            token = token.Replace("Bearer ", "");
+
+            var decoded = _jwtTokenService.DecodeToken(token);
+
+            return Ok(decoded);
+        }
+
     }
 }
+

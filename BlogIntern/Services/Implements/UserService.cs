@@ -1,6 +1,9 @@
-﻿using BlogIntern.Data;
+﻿using AutoMapper;
+using BlogIntern.Data;
+using BlogIntern.Dtos;
 using BlogIntern.Models;
 using BlogIntern.Services.Interfaces;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,16 +15,18 @@ namespace BlogIntern.Services.Implements
     public class UserService : IUserService
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public UserService(AppDbContext context)
+        public UserService(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<List<User>> GetAllUsers()
         {
             return await _context.Users
-                .Where(u => u.IsActive) // Sadece aktif kullanıcılar
+                .Where(u => u.IsActive)
                 .ToListAsync();
         }
 
@@ -33,9 +38,10 @@ namespace BlogIntern.Services.Implements
 
             return user;
         }
-
-        public async Task<User> AddNewUser(User user)
+        public async Task<User> AddNewUser(UserCreateDto dto)
         {
+            var user = _mapper.Map<User>(dto);
+
             var existing = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == user.Email);
 
@@ -52,8 +58,7 @@ namespace BlogIntern.Services.Implements
             return user;
         }
 
-        // ✅ Yeni eklenen method
-        // Kullanıcıları tarih bazında (InsertDate) sıralı getirir, en güncel en başta
+
         public async Task<List<User>> GetAllUsersOrderByDate()
         {
             return await _context.Users
@@ -96,5 +101,24 @@ namespace BlogIntern.Services.Implements
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<UserWithRoleDto>> GetUsersWithRoles_SP()
+        {
+            return await _context.UserWithRoleDtos
+                .FromSqlRaw("EXECUTE dbo.GetUsersWithRoles")
+                .ToListAsync();
+        }
+
+        public async Task<List<UserWithRoleSpDto>> GetUsersByRole_SP(string roleName)
+        {
+            var param = new SqlParameter("@RoleName", roleName);
+
+            return await _context.UserWithRoleSp
+                .FromSqlRaw("EXEC spGetUsersByRole_New @RoleName", param)
+                .ToListAsync();
+        }
+
+
+
     }
 }

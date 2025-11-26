@@ -36,5 +36,28 @@ namespace BlogIntern.Services.Implements
                 Expiration = expires
             };
         }
+
+        public TokenDecodeDto DecodeToken(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwt = handler.ReadJwtToken(token);
+
+            var email = jwt.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+
+            var roles = jwt.Claims
+                .Where(c => c.Type == ClaimTypes.Role)
+                .Select(c => c.Value)
+                .ToList();
+
+            var expiration = jwt.ValidTo;
+
+            return new TokenDecodeDto
+            {
+                Email = email,
+                Roles = roles,
+                Expiration = expiration
+            };
+        }
+
     }
 }
