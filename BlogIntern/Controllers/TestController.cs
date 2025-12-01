@@ -49,5 +49,13 @@ namespace BlogIntern.Controllers
                 return StatusCode(500, $"❌ Hata: {ex.Message}");
             }
         }
+
+        [AllowAnonymous]
+        [HttpGet("cause-error")]
+        public IActionResult CauseError()
+        {
+            throw new Exception("TEST_EXCEPTION_FROM_TEST_CONTROLLER");
+        }
+
     }
 }

@@ -102,14 +102,14 @@ namespace BlogIntern.Services.Implements
             return true;
         }
 
-        public async Task<List<UserWithRoleDto>> GetUsersWithRoles_SP()
+        public async Task<List<UserRoleSpDto>> GetUsersWithRoles_SP()
         {
             return await _context.UserWithRoleDtos
                 .FromSqlRaw("EXECUTE dbo.GetUsersWithRoles")
                 .ToListAsync();
         }
 
-        public async Task<List<UserWithRoleSpDto>> GetUsersByRole_SP(string roleName)
+        public async Task<List<UserRoleSpDto>> GetUsersByRole_SP(string roleName)
         {
             var param = new SqlParameter("@RoleName", roleName);
 

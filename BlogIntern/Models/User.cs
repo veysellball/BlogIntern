@@ -24,8 +24,11 @@ namespace BlogIntern.Models
 
         public DateTime InsertDate { get; set; } = DateTime.Now;
 
-        // 🔹 User <-> UserRole bağlantısı (Many-to-Many)
+      
         public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+
 
     }
 }

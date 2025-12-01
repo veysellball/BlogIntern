@@ -46,6 +46,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlogIntern.Controllers.AuthController",
+    "Method": "Refresh",
+    "RelativePath": "api/Auth/refresh",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BlogIntern.Dtos.RefreshTokenRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlogIntern.Controllers.RedisController",
     "Method": "Clear",
     "RelativePath": "api/Redis/clear",
@@ -69,6 +85,16 @@
     "ContainingType": "BlogIntern.Controllers.RedisController",
     "Method": "FromRedis",
     "RelativePath": "api/Redis/redis",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogIntern.Controllers.TestController",
+    "Method": "CauseError",
+    "RelativePath": "api/Test/cause-error",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

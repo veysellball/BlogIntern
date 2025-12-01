@@ -6,8 +6,26 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.File;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File(
+        path: "Logs/log-.txt",
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 7,
+        shared: true
+    )
+    .CreateLogger();
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog();
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -27,12 +45,10 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 
 builder.Services.AddScoped<RedisTestService>();
-
-
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
-builder.Services.AddSingleton<JwtTokenService>(); 
+builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 
@@ -64,7 +80,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//Swagger token configuration
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -77,7 +93,6 @@ builder.Services.AddSwaggerGen(options =>
         Description = "JWT destekli Blog API"
     });
 
-    //Swagger için JWT Authentication tanımı
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -87,7 +102,6 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "Bearer"
     });
 
-    //Swagger için global security requirement
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -116,7 +130,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
+app.UseMiddleware<BlogIntern.Middlewares.GlobalExceptionMiddleware>();
+
 app.UseAuthentication();
+
+
+app.UseMiddleware<BlogIntern.Middlewares.RequestResponseLoggingMiddleware>();
+
 app.UseAuthorization();
 
 app.MapControllers();

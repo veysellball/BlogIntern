@@ -1,0 +1,385 @@
+2025-12-01 00:00:59.490 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/refresh - application/json 112
+2025-12-01 00:00:59.522 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Refresh (BlogIntern)'
+2025-12-01 00:00:59.529 +03:00 [INF] Route matched with {action = "Refresh", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Refresh(BlogIntern.Dtos.RefreshTokenRequestDto) on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 00:00:59.672 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CreatedAt], [s].[ExpiresAt], [s].[RevokedAt], [s].[Token], [s].[UserId], [s].[Id0], [s].[Email], [s].[InsertDate], [s].[IsActive], [s].[Name], [s].[Password], [s0].[UserId], [s0].[RoleId], [s0].[Id], [s0].[Name]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CreatedAt], [r].[ExpiresAt], [r].[RevokedAt], [r].[Token], [r].[UserId], [u].[Id] AS [Id0], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [RefreshTokens] AS [r]
+    INNER JOIN [Users] AS [u] ON [r].[UserId] = [u].[Id]
+    WHERE [r].[Token] = @__refreshToken_0
+) AS [s]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r0].[Id], [r0].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r0] ON [u0].[RoleId] = [r0].[Id]
+) AS [s0] ON [s].[Id0] = [s0].[UserId]
+ORDER BY [s].[Id], [s].[Id0], [s0].[UserId], [s0].[RoleId]
+2025-12-01 00:00:59.725 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [RefreshTokens] SET [RevokedAt] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p2, @p3, @p4, @p5, @p6);
+2025-12-01 00:00:59.744 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`6[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 00:00:59.747 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Refresh (BlogIntern) in 215.9961ms
+2025-12-01 00:00:59.750 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Refresh (BlogIntern)'
+2025-12-01 00:00:59.760 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:00:59.766 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/refresh - 200 null application/json; charset=utf-8 275.7211ms
+2025-12-01 00:01:22.138 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/refresh - application/json 112
+2025-12-01 00:01:22.146 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Refresh (BlogIntern)'
+2025-12-01 00:01:22.149 +03:00 [INF] Route matched with {action = "Refresh", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Refresh(BlogIntern.Dtos.RefreshTokenRequestDto) on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 00:01:22.160 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CreatedAt], [s].[ExpiresAt], [s].[RevokedAt], [s].[Token], [s].[UserId], [s].[Id0], [s].[Email], [s].[InsertDate], [s].[IsActive], [s].[Name], [s].[Password], [s0].[UserId], [s0].[RoleId], [s0].[Id], [s0].[Name]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CreatedAt], [r].[ExpiresAt], [r].[RevokedAt], [r].[Token], [r].[UserId], [u].[Id] AS [Id0], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [RefreshTokens] AS [r]
+    INNER JOIN [Users] AS [u] ON [r].[UserId] = [u].[Id]
+    WHERE [r].[Token] = @__refreshToken_0
+) AS [s]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r0].[Id], [r0].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r0] ON [u0].[RoleId] = [r0].[Id]
+) AS [s0] ON [s].[Id0] = [s0].[UserId]
+ORDER BY [s].[Id], [s].[Id0], [s0].[UserId], [s0].[RoleId]
+2025-12-01 00:01:22.166 +03:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 00:01:22.170 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Refresh (BlogIntern) in 18.7689ms
+2025-12-01 00:01:22.171 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Refresh (BlogIntern)'
+2025-12-01 00:01:22.175 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:01:22.179 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/refresh - 401 null application/json; charset=utf-8 41.4008ms
+2025-12-01 00:06:19.328 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/login - application/json 55
+2025-12-01 00:06:19.338 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Login (BlogIntern)'
+2025-12-01 00:06:19.340 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BlogIntern.Dtos.LoginRequestDto) on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 00:06:19.392 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedEmail_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u1].[Id], [u1].[Email], [u1].[InsertDate], [u1].[IsActive], [u1].[Name], [u1].[Password], [s].[UserId], [s].[RoleId], [s].[Id], [s].[Name]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+) AS [u1]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r].[Id], [r].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+) AS [s] ON [u1].[Id] = [s].[UserId]
+ORDER BY [u1].[Id], [s].[UserId], [s].[RoleId]
+2025-12-01 00:06:19.610 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [r].[Id], [r].[Name]
+FROM [UserRoles] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__p_0
+2025-12-01 00:06:19.621 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-12-01 00:06:19.624 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`6[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 00:06:19.626 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Login (BlogIntern) in 283.5766ms
+2025-12-01 00:06:19.628 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Login (BlogIntern)'
+2025-12-01 00:06:19.636 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:06:19.640 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/login - 200 null application/json; charset=utf-8 312.9029ms
+2025-12-01 00:06:33.655 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/login - application/json 55
+2025-12-01 00:06:33.666 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Login (BlogIntern)'
+2025-12-01 00:06:33.671 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BlogIntern.Dtos.LoginRequestDto) on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 00:06:33.697 +03:00 [INF] Executed DbCommand (22ms) [Parameters=[@__normalizedEmail_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u1].[Id], [u1].[Email], [u1].[InsertDate], [u1].[IsActive], [u1].[Name], [u1].[Password], [s].[UserId], [s].[RoleId], [s].[Id], [s].[Name]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+) AS [u1]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r].[Id], [r].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+) AS [s] ON [u1].[Id] = [s].[UserId]
+ORDER BY [u1].[Id], [s].[UserId], [s].[RoleId]
+2025-12-01 00:06:33.841 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [r].[Id], [r].[Name]
+FROM [UserRoles] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__p_0
+2025-12-01 00:06:33.854 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-12-01 00:06:33.857 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`6[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 00:06:33.860 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Login (BlogIntern) in 186.9331ms
+2025-12-01 00:06:33.862 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Login (BlogIntern)'
+2025-12-01 00:06:33.871 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:06:33.875 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/login - 200 null application/json; charset=utf-8 220.6143ms
+2025-12-01 00:07:07.478 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/api/user/profile - null null
+2025-12-01 00:07:07.537 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.UserController.GetProfile (BlogIntern)'
+2025-12-01 00:07:07.541 +03:00 [INF] Route matched with {action = "GetProfile", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfile() on controller BlogIntern.Controllers.UserController (BlogIntern).
+2025-12-01 00:07:07.633 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u1].[Id], [u1].[Email], [u1].[InsertDate], [u1].[IsActive], [u1].[Name], [u1].[Password], [s].[UserId], [s].[RoleId], [s].[Id], [s].[Name]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [u1]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r].[Id], [r].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+) AS [s] ON [u1].[Id] = [s].[UserId]
+ORDER BY [u1].[Id], [s].[UserId], [s].[RoleId]
+2025-12-01 00:07:07.640 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`4[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 00:07:07.645 +03:00 [INF] Executed action BlogIntern.Controllers.UserController.GetProfile (BlogIntern) in 101.8194ms
+2025-12-01 00:07:07.648 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.UserController.GetProfile (BlogIntern)'
+2025-12-01 00:07:07.654 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:07:07.657 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/api/user/profile - 200 null application/json; charset=utf-8 179.3017ms
+2025-12-01 00:07:11.321 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/api/user/all - null null
+2025-12-01 00:07:11.330 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.UserController.GetAllUsers (BlogIntern)'
+2025-12-01 00:07:11.334 +03:00 [INF] Route matched with {action = "GetAllUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller BlogIntern.Controllers.UserController (BlogIntern).
+2025-12-01 00:07:11.353 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+FROM [Users] AS [u]
+WHERE [u].[IsActive] = CAST(1 AS bit)
+2025-12-01 00:07:11.357 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BlogIntern.Models.User, BlogIntern, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-01 00:07:11.366 +03:00 [INF] Executed action BlogIntern.Controllers.UserController.GetAllUsers (BlogIntern) in 28.9132ms
+2025-12-01 00:07:11.367 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.UserController.GetAllUsers (BlogIntern)'
+2025-12-01 00:07:11.388 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = -1), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:07:11.392 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/api/user/all - 200 null application/json; charset=utf-8 70.2527ms
+2025-12-01 00:07:52.955 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/decode - null 0
+2025-12-01 00:07:52.966 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Decode (BlogIntern)'
+2025-12-01 00:07:52.969 +03:00 [INF] Route matched with {action = "Decode", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Decode() on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 00:07:52.980 +03:00 [INF] Executing OkObjectResult, writing value of type 'BlogIntern.Dtos.TokenDecodeDto'.
+2025-12-01 00:07:52.984 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Decode (BlogIntern) in 12.8423ms
+2025-12-01 00:07:52.985 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Decode (BlogIntern)'
+2025-12-01 00:07:53.003 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:07:53.007 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/decode - 200 null application/json; charset=utf-8 52.0479ms
+2025-12-01 00:16:39.237 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/api/user/users-by-role/nes - null null
+2025-12-01 00:16:39.251 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.UserController.GetUsersByRole (BlogIntern)'
+2025-12-01 00:16:39.263 +03:00 [INF] Route matched with {action = "GetUsersByRole", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsersByRole(System.String) on controller BlogIntern.Controllers.UserController (BlogIntern).
+2025-12-01 00:16:39.334 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@RoleName='?' (Size = 3)], CommandType='"Text"', CommandTimeout='30']
+EXEC spGetUsersByRole_New @RoleName
+2025-12-01 00:16:39.342 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BlogIntern.Dtos.UserRoleSpDto, BlogIntern, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-01 00:16:39.345 +03:00 [INF] Executed action BlogIntern.Controllers.UserController.GetUsersByRole (BlogIntern) in 78.8234ms
+2025-12-01 00:16:39.346 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.UserController.GetUsersByRole (BlogIntern)'
+2025-12-01 00:16:39.352 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:16:39.356 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/api/user/users-by-role/nes - 200 null application/json; charset=utf-8 119.7829ms
+2025-12-01 00:49:06.293 +03:00 [INF] User profile is available. Using 'C:\Users\veysel\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-01 00:49:06.816 +03:00 [INF] Now listening on: https://localhost:7098
+2025-12-01 00:49:06.819 +03:00 [INF] Now listening on: http://localhost:5246
+2025-12-01 00:49:07.037 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-01 00:49:07.039 +03:00 [INF] Hosting environment: Development
+2025-12-01 00:49:07.042 +03:00 [INF] Content root path: C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern
+2025-12-01 00:49:07.361 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/index.html - null null
+2025-12-01 00:49:07.670 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/index.html - 200 null text/html;charset=utf-8 320.2541ms
+2025-12-01 00:49:07.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/_vs/browserLink - null null
+2025-12-01 00:49:07.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-01 00:49:07.707 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 32.6573ms
+2025-12-01 00:49:07.741 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.0691ms
+2025-12-01 00:49:07.780 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/v1/swagger.json - null null
+2025-12-01 00:49:07.806 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.0607ms
+2025-12-01 00:49:14.651 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/api/Test/cause-error - null null
+2025-12-01 00:49:15.420 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.TestController.CauseError (BlogIntern)'
+2025-12-01 00:49:15.460 +03:00 [INF] Route matched with {action = "CauseError", controller = "Test"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CauseError() on controller BlogIntern.Controllers.TestController (BlogIntern).
+2025-12-01 00:55:53.876 +03:00 [INF] Executed action BlogIntern.Controllers.TestController.CauseError (BlogIntern) in 398393.9045ms
+2025-12-01 00:55:53.889 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/index.html - null null
+2025-12-01 00:55:53.897 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.TestController.CauseError (BlogIntern)'
+2025-12-01 00:55:53.948 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/index.html - 200 null text/html;charset=utf-8 61.3822ms
+2025-12-01 00:55:55.419 +03:00 [INF] Executed DbCommand (160ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:55:55.593 +03:00 [ERR] Unhandled Exception
+System.Exception: TEST_EXCEPTION_FROM_TEST_CONTROLLER
+   at BlogIntern.Controllers.TestController.CauseError() in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Controllers\TestController.cs:line 57
+   at lambda_method7(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at BlogIntern.Middlewares.RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Middlewares\RequestResponseLoggingMiddleware.cs:line 52
+   at BlogIntern.Middlewares.RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Middlewares\RequestResponseLoggingMiddleware.cs:line 74
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BlogIntern.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Middlewares\GlobalExceptionMiddleware.cs:line 23
+2025-12-01 00:55:55.613 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/api/Test/cause-error - 499 null application/json 400962.4956ms
+2025-12-01 00:55:56.198 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/index.html - null null
+2025-12-01 00:55:56.212 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/index.html - 200 null text/html;charset=utf-8 14.5803ms
+2025-12-01 00:55:56.236 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-01 00:55:56.237 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/_vs/browserLink - null null
+2025-12-01 00:55:56.244 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 8.37ms
+2025-12-01 00:55:56.274 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/_vs/browserLink - 200 null text/javascript; charset=UTF-8 37.5509ms
+2025-12-01 00:55:56.308 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/v1/swagger.json - null null
+2025-12-01 00:55:56.321 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.5412ms
+2025-12-01 00:57:42.100 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/api/Test/cause-error - null null
+2025-12-01 00:57:42.121 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.TestController.CauseError (BlogIntern)'
+2025-12-01 00:57:42.123 +03:00 [INF] Route matched with {action = "CauseError", controller = "Test"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CauseError() on controller BlogIntern.Controllers.TestController (BlogIntern).
+2025-12-01 00:57:42.151 +03:00 [INF] Executed action BlogIntern.Controllers.TestController.CauseError (BlogIntern) in 24.4097ms
+2025-12-01 00:57:42.153 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.TestController.CauseError (BlogIntern)'
+2025-12-01 00:57:42.285 +03:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 00:57:42.359 +03:00 [ERR] Unhandled Exception
+System.Exception: TEST_EXCEPTION_FROM_TEST_CONTROLLER
+   at BlogIntern.Controllers.TestController.CauseError() in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Controllers\TestController.cs:line 57
+   at lambda_method7(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at BlogIntern.Middlewares.RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Middlewares\RequestResponseLoggingMiddleware.cs:line 52
+   at BlogIntern.Middlewares.RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Middlewares\RequestResponseLoggingMiddleware.cs:line 74
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at BlogIntern.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern\Middlewares\GlobalExceptionMiddleware.cs:line 23
+2025-12-01 00:57:42.369 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/api/Test/cause-error - 500 0 application/json 268.9688ms
+2025-12-01 12:20:20.870 +03:00 [INF] User profile is available. Using 'C:\Users\veysel\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-01 12:20:21.347 +03:00 [INF] Now listening on: https://localhost:7098
+2025-12-01 12:20:21.349 +03:00 [INF] Now listening on: http://localhost:5246
+2025-12-01 12:20:21.498 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-01 12:20:21.503 +03:00 [INF] Hosting environment: Development
+2025-12-01 12:20:21.505 +03:00 [INF] Content root path: C:\Users\veysel\Documents\GitHub\BlogIntern\BlogIntern
+2025-12-01 12:20:21.887 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/index.html - null null
+2025-12-01 12:20:22.189 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/index.html - 200 null text/html;charset=utf-8 322.1145ms
+2025-12-01 12:20:22.197 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-01 12:20:22.197 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/_vs/browserLink - null null
+2025-12-01 12:20:22.460 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 262.6156ms
+2025-12-01 12:20:22.517 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/_vs/browserLink - 200 null text/javascript; charset=UTF-8 320.0684ms
+2025-12-01 12:20:22.546 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7098/swagger/v1/swagger.json - null null
+2025-12-01 12:20:22.567 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7098/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.8199ms
+2025-12-01 12:21:17.675 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/login - application/json 55
+2025-12-01 12:21:18.053 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Login (BlogIntern)'
+2025-12-01 12:21:18.099 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BlogIntern.Dtos.LoginRequestDto) on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 12:21:20.653 +03:00 [INF] Executed DbCommand (148ms) [Parameters=[@__normalizedEmail_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u1].[Id], [u1].[Email], [u1].[InsertDate], [u1].[IsActive], [u1].[Name], [u1].[Password], [s].[UserId], [s].[RoleId], [s].[Id], [s].[Name]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+) AS [u1]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r].[Id], [r].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Id]
+) AS [s] ON [u1].[Id] = [s].[UserId]
+ORDER BY [u1].[Id], [s].[UserId], [s].[RoleId]
+2025-12-01 12:21:21.255 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[RoleId], [r].[Id], [r].[Name]
+FROM [UserRoles] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[RoleId] = [r].[Id]
+WHERE [u].[UserId] = @__p_0
+2025-12-01 12:21:21.566 +03:00 [INF] Executed DbCommand (21ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-12-01 12:21:21.610 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`6[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 12:21:21.632 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Login (BlogIntern) in 3524.1808ms
+2025-12-01 12:21:21.636 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Login (BlogIntern)'
+2025-12-01 12:21:21.722 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 12:21:21.762 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/login - 200 null application/json; charset=utf-8 4087.1105ms
+2025-12-01 12:28:32.301 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7098/api/Auth/refresh - application/json 112
+2025-12-01 12:28:32.404 +03:00 [INF] Executing endpoint 'BlogIntern.Controllers.AuthController.Refresh (BlogIntern)'
+2025-12-01 12:28:32.415 +03:00 [INF] Route matched with {action = "Refresh", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Refresh(BlogIntern.Dtos.RefreshTokenRequestDto) on controller BlogIntern.Controllers.AuthController (BlogIntern).
+2025-12-01 12:28:32.584 +03:00 [INF] Executed DbCommand (36ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[CreatedAt], [s].[ExpiresAt], [s].[RevokedAt], [s].[Token], [s].[UserId], [s].[Id0], [s].[Email], [s].[InsertDate], [s].[IsActive], [s].[Name], [s].[Password], [s0].[UserId], [s0].[RoleId], [s0].[Id], [s0].[Name]
+FROM (
+    SELECT TOP(1) [r].[Id], [r].[CreatedAt], [r].[ExpiresAt], [r].[RevokedAt], [r].[Token], [r].[UserId], [u].[Id] AS [Id0], [u].[Email], [u].[InsertDate], [u].[IsActive], [u].[Name], [u].[Password]
+    FROM [RefreshTokens] AS [r]
+    INNER JOIN [Users] AS [u] ON [r].[UserId] = [u].[Id]
+    WHERE [r].[Token] = @__refreshToken_0
+) AS [s]
+LEFT JOIN (
+    SELECT [u0].[UserId], [u0].[RoleId], [r0].[Id], [r0].[Name]
+    FROM [UserRoles] AS [u0]
+    INNER JOIN [Roles] AS [r0] ON [u0].[RoleId] = [r0].[Id]
+) AS [s0] ON [s].[Id0] = [s0].[UserId]
+ORDER BY [s].[Id], [s].[Id0], [s0].[UserId], [s0].[RoleId]
+2025-12-01 12:28:32.630 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [RefreshTokens] SET [RevokedAt] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+INSERT INTO [RefreshTokens] ([CreatedAt], [ExpiresAt], [RevokedAt], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p2, @p3, @p4, @p5, @p6);
+2025-12-01 12:28:32.645 +03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`6[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-12-01 12:28:32.646 +03:00 [INF] Executed action BlogIntern.Controllers.AuthController.Refresh (BlogIntern) in 228.9508ms
+2025-12-01 12:28:32.647 +03:00 [INF] Executed endpoint 'BlogIntern.Controllers.AuthController.Refresh (BlogIntern)'
+2025-12-01 12:28:32.656 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int64), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ApiLogs] ([CreatedAt], [DurationMs], [ErrorMessage], [Method], [Path], [QueryString], [RequestBody], [ResponseBody], [StatusCode], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-12-01 12:28:32.660 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7098/api/Auth/refresh - 200 null application/json; charset=utf-8 364.0794ms

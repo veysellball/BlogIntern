@@ -10,14 +10,19 @@ namespace BlogIntern.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
 
-        public DbSet<UserWithRoleDto> UserWithRoleDtos => Set<UserWithRoleDto>();
-        public DbSet<UserWithRoleSpDto> UserWithRoleSp => Set<UserWithRoleSpDto>();
+        public DbSet<UserRoleSpDto> UserWithRoleDtos => Set<UserRoleSpDto>();
+        public DbSet<UserRoleSpDto> UserWithRoleSp => Set<UserRoleSpDto>();
 
 
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<ApiLog> ApiLogs { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+
+
 
         [Required]
         public DateTime InsertDate { get; set; } = DateTime.Now;
@@ -27,9 +32,9 @@ namespace BlogIntern.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserWithRoleDto>().HasNoKey();
+            modelBuilder.Entity<UserRoleSpDto>().HasNoKey();
 
-            modelBuilder.Entity<UserWithRoleSpDto>().HasNoKey();
+            modelBuilder.Entity<UserRoleSpDto>().HasNoKey();
 
             modelBuilder.Entity<UserRole>()
                 .HasKey(ur => new { ur.UserId, ur.RoleId });

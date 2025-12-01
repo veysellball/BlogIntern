@@ -15,10 +15,8 @@ namespace BlogIntern.Services.Interfaces
         Task<bool> SoftDeleteUserById(int id);
         Task<bool> ReActivateUserById(int id);
         Task<List<User>> GetAllUsersOrderByDate();
-        Task<List<UserWithRoleDto>> GetUsersWithRoles_SP();
-        Task<List<UserWithRoleSpDto>> GetUsersByRole_SP(string roleName);
-
-
+        Task<List<UserRoleSpDto>> GetUsersWithRoles_SP();
+        Task<List<UserRoleSpDto>> GetUsersByRole_SP(string roleName);
 
 
     }
