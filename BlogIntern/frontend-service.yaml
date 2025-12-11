@@ -1,0 +1,11 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: blogintern-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: blogintern-frontend
+  ports:
+    - port: 80        # external port
+      targetPort: 80  # container port

@@ -1,0 +1,25 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogintern-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blogintern-api
+  template:
+    metadata:
+      labels:
+        app: blogintern-api
+    spec:
+      containers:
+        - name: blogintern-api
+          image: blogintern-api:v4
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://0.0.0.0:8080"
+            - name: ConnectionStrings__DefaultConnection
+              value: "Server=mssql;Database=BlogDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;"

@@ -46,7 +46,7 @@ namespace BlogIntern.Services.Implements
                 .FirstOrDefaultAsync(u => u.Email == user.Email);
 
             if (existing != null)
-                throw new Exception("Bu email zaten kayıtlı.");
+                throw new Exception("Bu email zaten kayıtlı. Lutfen baska bir mail girin");
 
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             user.InsertDate = DateTime.Now;

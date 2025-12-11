@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: blogintern-api
+  labels:
+    app: blogintern-api
+spec:
+  type: LoadBalancer
+  selector:
+    app: blogintern-api
+  ports:
+    - protocol: TCP
+      port: 80          # external port
+      targetPort: 8080  # local API port

@@ -1,0 +1,21 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogintern-frontend
+  labels:
+    app: blogintern-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blogintern-frontend
+  template:
+    metadata:
+      labels:
+        app: blogintern-frontend
+    spec:
+      containers:
+        - name: blogintern-frontend
+          image: nginx:latest   #  placeholder for ui
+          ports:
+            - containerPort: 80

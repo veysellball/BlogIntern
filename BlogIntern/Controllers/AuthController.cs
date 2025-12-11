@@ -26,7 +26,7 @@ namespace BlogIntern.Controllers
             var result = await _loginService.LoginAsync(request);
 
             if (result == null)
-                return Unauthorized(new { success = false, message = "Email veya şifre hatalı" });
+                return Unauthorized(new { success = false, message = "Email veya şifre hatalı kardesim 61" });
 
             return Ok(new
             {
@@ -73,5 +73,13 @@ namespace BlogIntern.Controllers
 
             return Ok(decoded);
         }
+
+        [HttpGet("whoami")]
+        public IActionResult WhoAmI()
+        {
+            var podName = Environment.MachineName;
+            return Ok(new { pod = podName });
+        }
+
     }
 }
